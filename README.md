@@ -23,7 +23,7 @@ Options:
 
 1. install dependencies as per [Stack](#stack)
 2. run `rake db:create db:migrate`
-3. run `rails server`
+3. run `foreman start` (see `.foreman` for default configuration)
 4. access web app at http://localhost:3000
 
 ## Deploying
