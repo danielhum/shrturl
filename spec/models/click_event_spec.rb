@@ -1,5 +1,15 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe ClickEvent, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "after_commit callback" do
+    let(:click_event) { FactoryBot.build(:click_event) }
+    it "enqueues geocode job if needed" do
+      allow(GeocodeClickEventJob).to receive(:perform_later)
+
+      click_event.save
+
+      expect(GeocodeClickEventJob)
+        .to have_received(:perform_later).with(click_event.id)
+    end
+  end
 end
