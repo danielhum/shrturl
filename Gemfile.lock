@@ -79,6 +79,7 @@ GEM
       xpath (~> 3.2)
     childprocess (4.1.0)
     concurrent-ruby (1.1.9)
+    connection_pool (2.2.5)
     crass (1.0.6)
     diff-lcs (1.4.4)
     erubi (1.10.0)
@@ -162,6 +163,7 @@ GEM
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redis (4.5.1)
     regexp_parser (2.1.1)
     rexml (3.2.5)
     rspec-core (3.10.1)
@@ -212,6 +214,10 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
+    sidekiq (6.3.1)
+      connection_pool (>= 2.2.2)
+      rack (~> 2.0)
+      redis (>= 4.2.0)
     spring (3.0.0)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
@@ -273,6 +279,7 @@ DEPENDENCIES
   rspec-rails (~> 5.0.0)
   sass-rails (>= 6)
   selenium-webdriver
+  sidekiq
   spring
   spring-commands-rspec
   standard

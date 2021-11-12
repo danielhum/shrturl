@@ -8,6 +8,13 @@ services:
       - shrturl-postgres:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: password
+  redis:
+    image: redis:6.2.5-alpine
+    ports:
+      - '6379:6379'
+    volumes:
+      - shrturl-redis:/data
+
 
   web:
     build: 
@@ -18,10 +25,16 @@ services:
       - ./.irbrc:/root/.irbrc
     ports:
       - "3000:3000"
+    environment:
+      REDIS_URL: "redis://redis:6379/0"
+      REDIS_PROVIDER: "REDIS_URL" # sidekiq config
     links:
       - "postgres:db"
+      - redis
     depends_on:
       - postgres
+      - redis
 
 volumes:
   shrturl-postgres:
+  shrturl-redis:

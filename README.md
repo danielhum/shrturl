@@ -26,6 +26,9 @@ Options:
 3. run `rails server`
 4. access web app at http://localhost:3000
 
+## Deploying
+1. set config vars as found in `.env.sample`
+
 ## Considerations
 
 ### Geocoder API Limits
