@@ -4,13 +4,14 @@
 - Ruby 3.0.2
 - Rails 6.1.4
 - Rspec 5
-- Postgres 13.3
+- Postgres 14.1
+- Redis 6.2.5
 
 ## Installation
 
 Options:
 1. [Docker](#option-1-docker-installation) (recommended)
-2. Manual
+2. [Manual](#option-2-manual-installation)
 
 ### Option 1: Docker Installation
 
@@ -22,9 +23,13 @@ Options:
 ### Option 2: Manual Installation
 
 1. install dependencies as per [Stack](#stack)
-2. run `rake db:create db:migrate`
-3. run `foreman start` (see `.foreman` for default configuration)
-4. access web app at http://localhost:3000
+2. set database environment variables (see `config/database.yml`):
+   - `DATABASE_HOST`
+   - `DATABASE_USERNAME`
+   - `DATABASE_PASSWORD`
+4. run `rake db:create db:migrate`
+5. run `foreman start` (see `.foreman` for default configuration)
+6. access web app at http://localhost:3000
 
 ## Deploying
 1. set config vars as found in `.env.sample`
