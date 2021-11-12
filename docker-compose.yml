@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:13.3
+    ports: 
+      - '5432:5432'
+    volumes:
+      - shrturl-postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
+
+  web:
+    build: 
+      context: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/myapp
+      - ./.irbrc:/root/.irbrc
+    ports:
+      - "3000:3000"
+    links:
+      - "postgres:db"
+    depends_on:
+      - postgres
+
+volumes:
+  shrturl-postgres:
