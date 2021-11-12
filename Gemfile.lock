@@ -82,6 +82,11 @@ GEM
     crass (1.0.6)
     diff-lcs (1.4.4)
     erubi (1.10.0)
+    factory_bot (6.2.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     ffi (1.15.4)
     geocoder (1.7.0)
     globalid (0.5.2)
@@ -108,6 +113,8 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
+      racc (~> 1.4)
+    nokogiri (1.12.5-arm64-darwin)
       racc (~> 1.4)
     parallel (1.21.0)
     parser (3.0.2.0)
@@ -206,6 +213,8 @@ GEM
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
     spring (3.0.0)
+    spring-commands-rspec (1.0.4)
+      spring (>= 0.9.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -247,11 +256,13 @@ GEM
 
 PLATFORMS
   aarch64-linux
+  arm64-darwin-20
 
 DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
+  factory_bot_rails
   geocoder
   jbuilder (~> 2.7)
   listen (~> 3.3)
@@ -263,6 +274,7 @@ DEPENDENCIES
   sass-rails (>= 6)
   selenium-webdriver
   spring
+  spring-commands-rspec
   standard
   turbolinks (~> 5)
   tzinfo-data

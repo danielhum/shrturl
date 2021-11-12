@@ -25,3 +25,15 @@ Options:
 2. run `rake db:create db:migrate`
 3. run `rails server`
 4. access web app at http://localhost:3000
+
+## Considerations
+
+### Geocoder API Limits
+This project uses Geocoder to geocode `ClickEvent` from IP Addresses, which relies on a free 3rd party API.
+This API has rate limits, and if there is a high rate of click events it may exceed the quota.
+
+Currently the project handles it by attempting the geocode lookup after a delay,
+which assumes that it was just a spike in clicks. However, if the overall traffic
+increases, we will need to either upgrade to a 
+[paid API](https://github.com/alexreisner/geocoder/blob/master/README_API_GUIDE.md#local-ip-address-lookups),
+or fallback to alternative APIs or a local database lookup.
