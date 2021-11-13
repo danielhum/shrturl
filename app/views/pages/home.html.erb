@@ -1,0 +1,16 @@
+<h1>Shrturl</h1>
+<h2>Shorten your URLs!</h2>
+<div>
+  <ul style="color:red;">
+<% flash.alert&.each do |msg| %>
+  <li><%= msg %></li>
+<% end %>
+  </ul>
+</div>
+<div>
+  <%= form_with model: @target_url do |f| %>
+    <%= f.label :url, "Your URL:" %>
+    <%= f.text_field :url, placeholder: "include https://" %>
+    <%= f.submit "Shorten" %>
+  <% end %>
+</div>

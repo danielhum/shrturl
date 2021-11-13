@@ -6,6 +6,6 @@ class CreateShortUrls < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
-    add_index :short_urls, :url_key
+    add_index :short_urls, :url_key, unique: true
   end
 end

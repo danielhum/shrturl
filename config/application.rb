@@ -20,5 +20,7 @@ module Myapp
     # config.eager_load_paths << Rails.root.join("extras")
 
     config.active_job.queue_adapter = :sidekiq
+
+    Rails.application.routes.default_url_options[:host] = ENV["SHORT_URL_HOST"]
   end
 end

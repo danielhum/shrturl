@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2021_11_12_062050) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["target_url_id"], name: "index_short_urls_on_target_url_id"
-    t.index ["url_key"], name: "index_short_urls_on_url_key"
+    t.index ["url_key"], name: "index_short_urls_on_url_key", unique: true
   end
 
   create_table "target_urls", force: :cascade do |t|

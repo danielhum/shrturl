@@ -1,6 +1,11 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
+  resources :target_urls, only: %i[create show]
+  get "s/:url_key", to: "pages#short_redirect", as: :short_redirect
+
+  root to: "pages#home"
+
   if Rails.env.production?
     Sidekiq::Web.use Rack::Auth::Basic do |username, password|
       # Protect against timing attacks:

@@ -1,0 +1,9 @@
+parallel: true          # default: false
+default_ignores: false  # default: true
+
+ignore:                 # default: []
+  - 'db/schema.rb':
+    - Layout/EmptyLinesAroundBlockBody
+  - 'vendor/**/*'
+  - 'spec/**/*':
+    - Layout/AlignHash

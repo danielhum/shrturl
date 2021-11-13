@@ -1,0 +1,8 @@
+<h1><%= @target_url.url %></h1>
+<div>
+  <ol>
+    <% @target_url.short_urls.each do |short_url| %>
+      <li><%= link_to short_url.url, short_url.url %></li>
+    <% end %>
+  </ol>
+</div>
