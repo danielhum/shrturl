@@ -1,6 +1,6 @@
 class TargetUrlsController < ApplicationController
   def create
-    @target_url = TargetUrlService.shorten!(target_url_params[:url])
+    @target_url = TargetUrlService.shorten(target_url_params[:url])
     if @target_url.persisted?
       redirect_to @target_url
       return

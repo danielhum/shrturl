@@ -1,12 +1,12 @@
 require "rails_helper"
 
 describe TargetUrlService do
-  describe ".shorten!" do
+  describe ".shorten" do
     let(:url) { "https://coingecko.com" }
 
     it "creates new TargetUrl with a ShortUrl" do
       expect do
-        described_class.shorten!(url)
+        described_class.shorten(url)
       end.to change(TargetUrl, :count).by(1)
       target_url = TargetUrl.last
       expect(target_url.url).to eq url
@@ -18,14 +18,15 @@ describe TargetUrlService do
       existing = FactoryBot.create(:target_url)
       target_url = nil
       expect do
-        target_url = described_class.shorten!(existing.url)
+        target_url = described_class.shorten(existing.url)
       end.to_not change(TargetUrl, :count)
       expect(target_url.id).to eq existing.id
     end
 
-    it "raises ActiveRecord::RecordInvalid if invalid" do
-      expect { described_class.shorten!("abc") }
-        .to raise_error(ActiveRecord::RecordInvalid)
+    it "returns unsaved record with errors if invalid" do
+      target_url = described_class.shorten("abc")
+      expect(target_url.persisted?).to be_falsey
+      expect(target_url.errors.messages[:url]).to include "is invalid"
     end
   end
 end
