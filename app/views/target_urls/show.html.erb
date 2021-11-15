@@ -23,6 +23,7 @@
               <button class="copy-btn btn btn-primary" type="button"
                   data-toggle="tooltip" data-placement="button"
               >Copy</button>
+              <%= link_to "View Report", short_url_path(short_url), class: "btn btn-outline-secondary fw-light" %>
               <% if new_short_url %>
                 <div class="valid-feedback">created!</div>
               <% end %>
