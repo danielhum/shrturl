@@ -2,6 +2,9 @@ require "sidekiq/web"
 
 Rails.application.routes.draw do
   resources :target_urls, only: %i[create show]
+  scope :target_urls do
+    post "search", to: "target_urls#search", as: :target_urls_search
+  end
   get "s/:url_key", to: "pages#short_redirect", as: :short_redirect
 
   root to: "pages#home"

@@ -9,9 +9,10 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield :head_footer %>
   </head>
 
-  <body>
+  <body id=<%= "#{controller.controller_name}-#{controller.action_name}" %>>
     <%= yield %>
   </body>
 </html>

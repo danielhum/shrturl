@@ -7,10 +7,15 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-import '../js/bootstrap_js_files.js'
+import "../js/bootstrap_js_files.js"
+import "../js/target_urls/show.js"
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
 window.bootstrap = require("bootstrap")
+
+document.addEventListener("turbolinks:load", function() {
+    Rails.refreshCSRFTokens();
+})

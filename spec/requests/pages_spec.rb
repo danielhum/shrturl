@@ -7,9 +7,9 @@ RSpec.describe "Pages", type: :request do
       expect(response).to have_http_status(:success)
       expect(response.body)
         .to match(%r{
-          <label\sfor="target_url_url">Your\sURL:</label>
+          <label\sclass=".*"\sfor="target_url_url">Your\sURL:</label>
           \s*
-          <input\splaceholder="include\shttps://"\stype="text"\s
+          <input\splaceholder="include\shttps://"\sclass=".*"\stype="text"\s
             name="target_url\[url\]"\sid="target_url_url"\s/>
         }x)
     end
