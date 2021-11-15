@@ -14,5 +14,14 @@
 
   <body id=<%= "#{controller.controller_name}-#{controller.action_name}" %>>
     <%= yield %>
+  <footer class="container py-5">
+    <nav class="row">
+      <div class="col text-muted text-center">
+        <%= link_to "Home", root_path %>
+        &nbsp;&middot;&nbsp;
+        <%= link_to "Reports", short_urls_path %>
+      </div>
+    </nav>
+  </footer>
   </body>
 </html>

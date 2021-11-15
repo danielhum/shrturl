@@ -8,27 +8,22 @@
     </div>
   </section>
   <section class="pb-1 text-center container">
-    <div class="row">
-      <div class="col">
-        <h2><%= @short_url.url %></h2>
-        <p class="lead text-muted"><%= @short_url.target_url.url %></p>
-      </div>
-    </div>
     <div class="row px-5">
       <div class="col">
         <table class="table table-striped">
-          <thead id="clicks-thead">
-          <tr>
-            <th scope="col" class="text-start">Coordinates</th>
-            <th scope="col" class="text-start">Locality</th>
-            <th scope="col">Timestamp</th>
-          </tr>
+          <thead id="short-urls-thead">
+            <tr>
+              <th scope="col" class="text-start">Short URL</th>
+              <th scope="col" class="text-start">Target URL</th>
+              <th scope="col">Clicks Count</th>
+              <th scope="col"></th>
+            </tr>
           </thead>
-          <tbody id="clicks-tbody">
-          <%= render partial: "show_table", locals: {clicks: @clicks} %>
+          <tbody id="short-urls-tbody">
+          <%= render partial: "index_table", locals: {short_urls: @short_urls} %>
           </tbody>
         </table>
-        <div id="clicks-pagy-container">
+        <div id="short-urls-pagy-container">
           <%= render partial: "pagy_nav_js" %>
         </div>
       </div>

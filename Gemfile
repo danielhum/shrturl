@@ -30,6 +30,7 @@ gem "bootsnap", ">= 1.4.4", require: false
 
 gem "geocoder"
 gem "mechanize"
+gem "pagy", "~> 5.3"
 gem "sidekiq"
 
 group :development, :test do

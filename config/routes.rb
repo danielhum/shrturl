@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   scope :target_urls do
     post "search", to: "target_urls#search", as: :target_urls_search
   end
+  resources :short_urls, only: %i[index show]
   get "s/:url_key", to: "pages#short_redirect", as: :short_redirect
 
   root to: "pages#home"

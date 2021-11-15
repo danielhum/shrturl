@@ -10,6 +10,11 @@ class ShortUrl < ApplicationRecord
   validates_length_of :url_key, maximum: 15
   # note: unique validation of url_key handled by DB unique index
 
+  scope :order_by_clicks, -> do
+    select("short_urls.*, COUNT(click_events.id) as clicks_count")
+      .left_joins(:click_events).group(:id).order("COUNT(click_events.id) DESC")
+  end
+
   def update_url_key!
     return false if url_key.present?
 

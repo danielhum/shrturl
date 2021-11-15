@@ -1,0 +1,7 @@
+var shortUrlsTbody = document.getElementById("short-urls-tbody")
+shortUrlsTbody.innerHTML = "<%= j(render "index_table", short_urls: @short_urls) %>";
+document.getElementById("short-urls-thead").scrollIntoView(true)
+
+var shortUrlsNavContainer = document.getElementById("short-urls-pagy-container")
+shortUrlsNavContainer.innerHTML = "<%= j(render "pagy_nav_js") %>";
+Pagy.init(shortUrlsNavContainer);

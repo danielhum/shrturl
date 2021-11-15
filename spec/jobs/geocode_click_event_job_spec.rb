@@ -8,8 +8,7 @@ RSpec.describe GeocodeClickEventJob, type: :job do
     described_class.new.perform(click_event.id)
 
     click_event.reload
-    coords = Geocoder.search(click_event.ip_address).first.coordinates
-    expect(click_event.latitude).to eq coords[0]
-    expect(click_event.longitude).to eq coords[1]
+    expect(click_event.latitude).to eq 40.7143528
+    expect(click_event.longitude).to eq(-74.0059731)
   end
 end

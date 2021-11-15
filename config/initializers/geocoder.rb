@@ -7,11 +7,12 @@ if Rails.env.test?
     Geocoder::Lookup::Test.add_stub(
       ip, [
         {
-          "coordinates" => coordinates
+          "coordinates" => coordinates,
           # "address" => "New York, NY, USA",
-          # "state" => "New York",
+          "city" => "Los Angeles",
+          "state" => "California",
           # "state_code" => "NY",
-          # "country" => "United States",
+          "country" => "United States"
           # "country_code" => "US"
         }
       ]

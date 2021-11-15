@@ -1,0 +1,8 @@
+<% local_assigns[:short_urls].each do |short_url| %>
+  <tr>
+    <td class="text-start"><%= short_url.url %></td>
+    <td class="text-start"><%= short_url.target_url.url %></td>
+    <td><%= short_url.clicks_count %></td>
+    <td><%= link_to "Details", short_url %></td>
+  </tr>
+<% end %>
