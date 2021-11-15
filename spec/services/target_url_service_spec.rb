@@ -4,13 +4,23 @@ describe TargetUrlService do
   describe ".shorten" do
     let(:url) { "https://coingecko.com" }
 
+    before do
+      allow(TargetUrlService).to receive(:get_url_title).and_return "Title"
+    end
+
     it "creates new TargetUrl with a ShortUrl" do
       target_url = nil
       new_short_url = nil
+      allow(TargetUrlService).to receive(:get_url_title).and_call_original
+      mechanize = double("mechanize")
+      page = double("page", title: "Cryptocurrency | CoinGecko")
+      expect(Mechanize).to receive(:new).and_return(mechanize)
+      expect(mechanize).to receive(:get).with(url).and_return(page)
       expect do
         target_url, new_short_url = described_class.shorten(url)
       end.to change(TargetUrl, :count).by(1)
       expect(target_url.url).to eq url
+      expect(target_url.title).to include "CoinGecko"
       expect(target_url.short_urls.first).to eq new_short_url
       expect(new_short_url.url).to_not be_empty
     end
