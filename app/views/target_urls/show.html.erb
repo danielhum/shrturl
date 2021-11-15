@@ -1,8 +1,52 @@
-<h1><%= @target_url.url %></h1>
-<div>
-  <ol>
-    <% @target_url.short_urls.each do |short_url| %>
-      <li><%= link_to short_url.url, short_url.url %></li>
-    <% end %>
-  </ol>
+<div class="container">
+  <section class="py-5 text-center container">
+    <div class="row">
+      <div class="col">
+        <h1 class="display-1"><%= link_to "Shrturl", root_path, class: "text-reset text-decoration-none" %></h1>
+        <p class="lead text-muted">Shorten your URLs!</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h1><%= @target_url.url %></h1>
+        <form>
+          <div class="input-group">
+          <% @target_url.short_urls.each do |short_url| %>
+            <input class="form-control" type="text" value="<%= short_url.url %>" readonly/>
+            <button class="copy-btn btn btn-primary" type="button"
+                data-toggle="tooltip" data-placement="button"
+            >Copy</button>
+          <% end %>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
 </div>
+
+<script>
+  let copyTooltip = "Copy to Clipboard";
+  let copyBtns = [].slice.call(document.getElementsByClassName("copy-btn"));
+  copyBtns.map(function(el){
+      el.title = copyTooltip;
+      return new bootstrap.Tooltip(el);
+  });
+  copyBtns.forEach(function(el) {
+      el.onclick = function() {
+          copyToClipboard(el.previousElementSibling);
+          showCopiedTooltip(el);
+      }
+  });
+
+  function copyToClipboard(input) {
+      input.select();
+      input.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(input.value);
+  }
+  function showCopiedTooltip(btn) {
+      btn.setAttribute("data-bs-original-title", "Copied");
+      let tooltip = bootstrap.Tooltip.getInstance(btn);
+      tooltip.show();
+      btn.setAttribute("data-bs-original-title", copyTooltip);
+  }
+</script>
