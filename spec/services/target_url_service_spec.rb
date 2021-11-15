@@ -51,7 +51,8 @@ describe TargetUrlService do
       expect(mechanize).to receive(:get).with(url)
         .and_raise(SocketError.new("getaddrinfo: Name or service not known"))
       target_url, _ = described_class.shorten(url)
-      expect(target_url.errors.messages[:url]).to include "could not be loaded"
+      expect(target_url.errors.messages[:url].join(" "))
+        .to include "could not be loaded"
     end
   end
 end
