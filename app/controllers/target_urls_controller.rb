@@ -1,4 +1,6 @@
 class TargetUrlsController < ApplicationController
+  include Pagy::Backend
+
   def create
     @target_url, short_url = TargetUrlService.shorten(target_url_params[:url])
     if @target_url.persisted?
@@ -28,6 +30,7 @@ class TargetUrlsController < ApplicationController
   def show
     @target_url = TargetUrl.find(params[:id])
     @new_short_url_id = params[:new_short_url_id]
+    @pagy, @short_urls = pagy(@target_url.short_urls)
   end
 
   private

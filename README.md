@@ -1,11 +1,14 @@
 # Shrturl - a URL shortener
 
+see it in action at https://cg-shrturl.herokuapp.com/
+
 ## Stack
 - Ruby 3.0.2
 - Rails 6.1.4
 - Rspec 5
 - Postgres 14.1
 - Redis 6.2.5
+- Sidekiq 6.3.1
 
 ## Installation
 
@@ -23,16 +26,16 @@ Options:
 ### Option 2: Manual Installation
 
 1. install dependencies as per [Stack](#stack)
-2. set database environment variables (see `config/database.yml`):
+2. set database environment variables (see [`database.yml`](config/database.yml)):
    - `DATABASE_HOST`
    - `DATABASE_USERNAME`
    - `DATABASE_PASSWORD`
 4. run `rake db:create db:migrate`
-5. run `foreman start` (see `.foreman` for default configuration)
+5. run `foreman start` (see [`.foreman`](.foreman) for default configuration)
 6. access web app at http://localhost:3000
 
 ## Deploying
-1. set config vars as found in `.env.sample`
+1. set config vars as found in [`.env.sample`](.env.sample)
 
 ## Considerations
 

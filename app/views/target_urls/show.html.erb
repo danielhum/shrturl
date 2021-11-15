@@ -15,7 +15,7 @@
           Title: <%= sanitize_report_content @target_url.title %>
         </p>
         <form>
-          <% @target_url.short_urls.each do |short_url| %>
+          <% @short_urls.each do |short_url| %>
             <% new_short_url = short_url.id == @new_short_url_id.to_i %>
             <div class="input-group py-1">
               <input class="form-control <%= "is-valid" if new_short_url %>"
@@ -30,6 +30,7 @@
             </div>
           <% end %>
         </form>
+        <%== pagy_bootstrap_nav(@pagy) %>
       </div>
     </div>
   </section>
