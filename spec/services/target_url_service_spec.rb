@@ -42,5 +42,16 @@ describe TargetUrlService do
       expect(target_url.errors.messages[:url]).to include "is invalid"
       expect(short_url).to be_nil
     end
+
+    it "populates error message if URL failed to load" do
+      url = "https://congecko.com"
+      allow(TargetUrlService).to receive(:get_url_title).and_call_original
+      mechanize = double("mechanize")
+      expect(Mechanize).to receive(:new).and_return(mechanize)
+      expect(mechanize).to receive(:get).with(url)
+        .and_raise(SocketError.new("getaddrinfo: Name or service not known"))
+      target_url, _ = described_class.shorten(url)
+      expect(target_url.errors.messages[:url]).to include "could not be loaded"
+    end
   end
 end
