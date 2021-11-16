@@ -25,9 +25,10 @@
             <% end %>
         </div>
         <div>
-          <%= form_with model: @target_url do |f| %>
+          <%= form_with model: @target_url,
+                html: {id: "form-target-url", onkeydown:"return event.key != 'Enter';"} do |f| %>
             <%= f.label :url, "Your URL:", class: "form-label" %>
-            <%= f.text_field :url, placeholder: "include https://", class: "form-control" %>
+            <%= f.text_field :url, placeholder: "include https://", class: "form-control", required: true %>
             <%= f.submit "Lookup Existing", class: "btn btn-primary mt-2", formaction: target_urls_search_path %>
             <span class="fw-light align-middle px-2">or</span>
             <%= f.submit "Shorten", class: "btn btn-primary mt-2" %>
