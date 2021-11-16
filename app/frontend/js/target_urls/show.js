@@ -24,4 +24,9 @@ document.addEventListener("DOMContentLoaded", function(){
             showCopiedTooltip(el);
         }
     });
+
+    let newShortUrls = document.getElementsByClassName("new-short-url")
+    if (newShortUrls.length > 0) {
+        newShortUrls[newShortUrls.length-1].scrollIntoView();
+    }
 });
